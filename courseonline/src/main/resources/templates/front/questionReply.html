@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<!--suppress ThymeleafVariablesResolveInspection -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>问题反馈信息</title>
+    <!-- css -->
+    <link rel="stylesheet" th:href="@{/frontStyle/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/frontStyle/css/fontawesome.css}">
+    <link rel="stylesheet" th:href="@{/frontStyle/css/themify-icons.css}">
+    <link rel="stylesheet" th:href="@{/frontStyle/css/animate.min.css}">
+    <link rel="stylesheet" th:href="@{/frontStyle/css/owl.carousel.min.css}">
+    <link rel="stylesheet" th:href="@{/frontStyle/css/magnific-popup.css}">
+    <link rel="stylesheet" th:href="@{/frontStyle/css/metismenu.css}">
+    <link rel="stylesheet" th:href="@{/frontStyle/css/nice-select.css}">
+    <link rel="stylesheet" th:href="@{/frontStyle/css/jquery-ui.css}">
+    <link rel="stylesheet" th:href="@{/frontStyle/css/common.css}">
+    <link rel="stylesheet" th:href="@{/frontStyle/css/style.css}">
+    <link rel="stylesheet" th:href="@{/frontStyle/css/responsive.css}">
+</head>
+<body>
+    <!-- body wrap start -->
+    <div class="body_wrap">
+
+        <!-- backtotop - start -->
+        <div id="thetop"></div>
+        <div id="backtotop">
+            <a href="#" id="scroll">
+                <i class="fal fa-arrow-up"></i>
+                <i class="fal fa-arrow-up"></i>
+            </a>
+        </div>
+        <!-- backtotop - end -->
+
+        <!-- start Preloader  -->
+        <!--<div class="preloder_part">
+            <div class="spinner">
+                <div class="dot1"></div>
+                <div class="dot2"></div>
+            </div>
+        </div>-->
+        <!-- End Preloader  -->
+
+        <!-- header start -->
+        <div th:replace="front/index :: header(0.3)"></div>
+        <!-- header start -->
+
+        <!-- slide-bar start -->
+        <div th:replace="front/index :: slide-bar"></div>
+        <div class="body-overlay"></div>
+        <!-- slide-bar end -->
+
+        <main>
+            <!-- page title start -->
+            <section class="page_title_area" data-overlay="6" data-background="/frontStyle/images/page_title.jpg">
+                <div class="containe">
+                    <div class="row">
+                        <div class="col-l2">
+                            <div class="page_title text-center">
+                                <h2>问题反馈信息</h2>
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb justify-content-center">
+                                        <li class="breadcrumb-item">
+                                            <a th:href="@{/frontlink/index}">Home</a>
+                                        </li>
+                                        <li class="breadcrumb-item active" aria-current="page">Question Reply</li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- page title end -->
+
+            <!-- Question Reply start -->
+            <section class="blog_area pt-120 pb-70">
+                <div class="container">
+                    <div class="row">
+                        <div th:replace="front/studentInfo :: PersonalCenter-SlideBar"></div>
+                        <div class="col-lg-9">
+                            <div class="blog_wrap mb-50">
+                                <article class="blog_item format_no_thumb" th:each="data:${questionReplyList}">
+                                    <div class="post_content">
+                                        <ul class="post_meta ul_li">
+                                            <li><i class="fal fa-calendar-alt"></i>[[${#dates.format(data.qtime, 'yyyy-MM-dd')}]]</li>
+                                        </ul>
+                                        <h3 class="title"><a th:href="@{/frontlink/questionReplyDetails(id=${data.id})}"><strong>[[${data.title}]]</strong></a></h3>
+                                        <strong>问题描述：</strong><p style="overflow: hidden;height: 3.0em;">[[${data.question}]]</p>
+                                        <div class="btn_wrap mt-20">
+                                            <a class="r_btn" th:href="@{/frontlink/questionReplyDetails(id=${data.id})}">查看<i class="fal fa-angle-double-right"></i></a>
+                                            <div class="blog_author_info ul_li">
+                                                <div class="a_text">
+                                                    <p>[[${data.state}]]</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                                <!-- pagination start-->
+                                <div class="pagination_wrap pt-50" th:if="${frontDataPage.rows>0}" th:fragment="pagination">
+                                    <ul>
+                                        <li>
+                                            <a th:href="@{${frontDataPage.path}(current=1)}">
+                                                <i class="fal fa-angle-double-left"></i>
+                                            </a>
+                                        </li>
+                                        <li th:if="${frontDataPage.current!=1}">
+                                            <a th:href="@{${frontDataPage.path}(current=(${frontDataPage.current}-1))}">
+                                                <i class="fal fa-angle-left"></i>
+                                            </a>
+                                        </li>
+                                        <li th:each="i:${#numbers.sequence(frontDataPage.from,frontDataPage.to)}">
+                                            <a th:href="@{${frontDataPage.path}(current=${i})}" th:text="${i}" th:class="${i==frontDataPage.current?'current_page':''}" ></a>
+                                        </li>
+                                        <li th:if="${frontDataPage.current!=frontDataPage.total}">
+                                            <a th:href="@{${frontDataPage.path}(current=${frontDataPage.current+1})}">
+                                                <i class="fal fa-angle-right"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a th:href="@{${frontDataPage.path}(current=${frontDataPage.total})}">
+                                                <i class="fal fa-angle-double-right"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- pagination end-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Question Reply end -->
+
+            <!-- bai start -->
+            <div th:replace="front/index :: bai"></div>
+            <!-- bai end -->
+        </main>
+
+        <!-- footer start -->
+        <div th:replace="front/index :: footer"></div>
+        <!-- footer end -->
+    </div>
+    <!-- body wrap end -->
+    <!-- js -->
+    <script th:src="@{/frontStyle/js/jquery-3.5.1.min.js}"></script>
+    <script th:src="@{/frontStyle/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/frontStyle/js/owl.carousel.min.js}"></script>
+    <script th:src="@{/frontStyle/js/metismenu.min.js}"></script>
+    <script th:src="@{/frontStyle/js/wow.min.js}"></script>
+    <script th:src="@{/frontStyle/js/jquery.nice-select.min.js}"></script>
+    <script th:src="@{/frontStyle/js/jquery-ui.js}"></script>
+    <script th:src="@{/frontStyle/js/isotope.pkgd.min.js}"></script>
+    <script th:src="@{/frontStyle/js/imagesloaded.pkgd.min.js}"></script>
+    <script th:src="@{/frontStyle/js/jquery.magnific-popup.min.js}"></script>
+    <script th:src="@{/frontStyle/js/main.js}"></script>
+    <script th:src="@{/plugins/validate/jquery.validate.min.js}"></script>
+    <script th:src="@{/plugins/validate/messages_zh.js}"></script>
+</body>
+<script>
+    $(document).ready(function () {
+
+    });
+</script>
+</html>

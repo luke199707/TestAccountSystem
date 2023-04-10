@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lc.courseonline.mapper.GradeMapper">
+    <resultMap id="BaseResultMap" type="com.lc.courseonline.entity.Grade" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="department" property="department" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <!--分页条件查询-->
+    <select id="selectGradeByConditionForPage" resultMap="BaseResultMap" parameterType="map">
+        WITH selectTemp AS (SELECT TOP 100 PERCENT ROW_NUMBER() OVER (ORDER BY g.${sortField} ${order}) as __row_number__,
+        g.id,d.name as department,g.name,g.create_time,g.update_time
+        from grade g
+        join department d on g.department=d.id
+        <where>
+            <if test="name!=null and name!=''">
+                g.name like concat('%',#{name},'%')
+            </if>
+        </where>
+        ORDER BY g.${sortField} ${order})
+        SELECT * FROM selectTemp WHERE __row_number__ BETWEEN (#{page}-1)*#{limit}+1 AND #{page}*#{limit} ORDER BY __row_number__
+    </select>
+
+    <!--条件统计-->
+    <select id="selectCountOfGradeByCondition" parameterType="map" resultType="int">
+        select count(*)
+        from grade g
+        join department d on g.department=d.id
+        <where>
+            <if test="name!=null and name!=''">
+                g.name like concat('%',#{name},'%')
+            </if>
+        </where>
+    </select>
+
+    <!--通过学院id删除-->
+    <delete id="deleteGradeByDepartmentId" parameterType="String" >
+        delete from grade
+        where department = #{departmentId}
+    </delete>
+</mapper>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<!--suppress ThymeleafVariablesResolveInspection -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>视频观看情况查询</title>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <!--CSS-->
+    <link rel="stylesheet" th:href="@{/plugins/layui-v2.7.2/layui/css/layui.css}">
+    <link rel="stylesheet" th:href="@{/plugins/bootstrap-3.4.1-dist/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/plugins/font-awesome/css/font-awesome.css}">
+    <link rel="stylesheet" th:href="@{/css/animate.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div id="wrapper">
+    <div th:replace="back/index :: leftnavbar(4)"></div>
+    <div id="page-wrapper" class="gray-bg">
+        <!--thmeleaf模板-->
+        <div th:replace="back/index :: rightheader"></div>
+
+        <!--右侧标题开始-->
+        <div class="row wrapper border-bottom white-bg page-heading">
+            <div class="col-lg-10">
+                <h2>视频观看情况查询</h2>
+                <ol class="breadcrumb">
+                    <li>
+                        <a th:href="@{/backlink/index}">Home</a>
+                    </li>
+                    <li class="active">
+                        <strong>视频观看情况查询</strong>
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <!--右侧标题结束-->
+
+        <!--右侧内容开始-->
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>视频观看情况
+                                <small></small>
+                            </h5>
+                        </div>
+                        <div class="ibox-content">
+                            <!--搜索栏-->
+                            <form class="layui-form layui-form-pane">
+                                <div class="layui-form-item">
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">学号</label>
+                                        <div class="layui-input-inline">
+                                            <input class="layui-input" name="searchSno" id="searchSno"
+                                                   autocomplete="off">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">学生姓名</label>
+                                        <div class="layui-input-inline">
+                                            <input class="layui-input" name="searchStuName" id="searchStuName"
+                                                   autocomplete="off">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">课程</label>
+                                        <div class="layui-input-inline">
+                                            <select id="searchCourseid" name="courseid" class="form-control" lay-filter="searchCourseid">
+                                                <option value="">请选择</option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">章节</label>
+                                        <div class="layui-input-inline">
+                                            <select id="searchChapterid" name="chapterid" class="form-control" lay-filter="searchChapterid">
+                                                <option value="">请选择</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">小节</label>
+                                        <div class="layui-input-inline">
+                                            <select id="searchSubsectionid" name="subsectionid" class="form-control">
+                                                <option value="">请选择</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <button id="btnSearch" type="button" class="btn btn-primary" data-type="reload"
+                                                lay-filter="data-search-btn"><i class="layui-icon"></i> 搜 索
+                                        </button>
+                                        &nbsp;&nbsp;&nbsp;
+                                        <button id="btnReset" type="reset" class="btn btn-default">清空</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <!--数据表格-->
+                            <table id="dataTable" lay-filter="dataTable"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--右侧内容结束-->
+        <!--thmeleaf模板-->
+        <div th:replace="back/index :: rightfooter"></div>
+    </div>
+</div>
+<!-- showModal -->
+<div class="modal fade" id="showModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="editModalLabel">章节</h4>
+            </div>
+            <form id="viewRecordsShowForm" class="form-horizontal">
+                <div class="modal-body">
+                    <div class="form-group"><label class="col-sm-4 control-label">观看人：</label>
+                        <div class="col-sm-8">
+                            <p id="showStuid" class="form-control-static"></p>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group"><label class="col-sm-4 control-label">课程：</label>
+                        <div class="col-sm-8">
+                            <p id="showCourseid" class="form-control-static"></p>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group"><label class="col-sm-4 control-label">章节：</label>
+                        <div class="col-sm-8">
+                            <p id="showChapterid" class="form-control-static"></p>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group"><label class="col-sm-4 control-label">小节：</label>
+                        <div class="col-sm-8">
+                            <p id="showSubsectionid" class="form-control-static"></p>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group"><label class="col-sm-4 control-label">观看时间：</label>
+                        <div class="col-sm-8">
+                            <p id="showCreateTime" class="form-control-static"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--JS-->
+<script th:src="@{/js/jquery-3.4.1.js}"></script>
+<script th:src="@{/plugins/layui-v2.7.2/layui/layui.js}"></script>
+<script th:src="@{/plugins/metisMenu/jquery.metisMenu.js}"></script>
+<script th:src="@{/plugins/pace/pace.min.js}"></script>
+<script th:src="@{/plugins/slimscroll/jquery.slimscroll.js}"></script>
+<script th:src="@{/js/inspinia.js}"></script>
+<script th:src="@{/plugins/bootstrap-3.4.1-dist/js/bootstrap.js}"></script>
+<script th:src="@{/plugins/validate/jquery.validate.min.js}"></script>
+<script th:src="@{/plugins/validate/messages_zh.js}"></script>
+</body>
+<script type="text/html" id="toolbar">
+
+</script>
+<script type="text/html" id="bar">
+    <a class="layui-btn layui-btn-xs layui-btn-primary" lay-event="show">查看</a>
+</script>
+<script type="text/javascript">
+    //layui插件
+    layui.use(['table','form'], function () {
+        var table = layui.table;
+        var form = layui.form;
+        table.render({
+            elem: '#dataTable'
+            , title: '视频观看情况信息表'
+            , height: 'auto'
+            , url: '/courseonline/viewRecords/pageListConditionViewRecords' //数据接口
+            , page: true //开启分页
+            , limits: [10, 20, 30, 50, 100]
+            , limit: 10
+            , toolbar: '#toolbar'
+            , autoSort: false
+            , cols: [
+                [//表头
+                    {type: 'numbers'}
+                    , {field: 'sno', title: '学号', width: '10%'}
+                    , {field: 'stuid', title: '学生姓名', width: '10%'}
+                    , {field: 'courseid', title: '课程', width: '10%', sort: true}
+                    , {field: 'chapterid', title: '章节',  sort: true}
+                    , {field: 'subsectionid', title: '小节',  sort: true}
+                    , {field: 'createTime', title: '观看时间', width: '10%', sort: true}
+                    , {title: '操作', width: 150, minWidth: '10%', toolbar: '#bar'}
+                ]
+            ]
+        });
+
+        //单元格工具事件
+        table.on('tool(dataTable)', function (obj) { // 注：dataTable 是 table 原始标签的属性 lay-filter="对应的值"
+            var data = obj.data; //获得当前行数据
+            var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+            var tr = obj.tr; //获得当前行 tr 的 DOM 对象（如果有的话）
+            if (layEvent === 'show') {
+                $("#showStuid").html(data.stuid);
+                $("#showCourseid").html(data.courseid);
+                $("#showChapterid").html(data.chapterid);
+                $("#showSubsectionid").html(data.subsectionid);
+                $("#showCreateTime").html(data.createTime);
+                $('#showModal').modal('toggle');//显示编辑模态框
+            }
+        });
+
+        //搜索监听
+        var active = {
+            reload: function () {
+                //执行重载
+                table.reload('dataTable', {
+                    page: {
+                        curr: 1 //重新从第 1 页开始
+                    }
+                    , where: {
+                        stuName: $('#searchStuName').val()		//得到搜索框里已输入的数据,在表格中进行搜索
+                        ,sno: $('#searchSno').val()
+                        ,courseid: $('#searchCourseid').val()
+                        ,chapterid: $('#searchChapterid').val()
+                        ,subsectionid: $('#searchSubsectionid').val()
+                    }
+                });
+            }
+        };
+        $('#btnSearch').on('click', function () {
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
+
+        //排序监听
+        table.on('sort(dataTable)', function (obj) { //注：sort是写死的，监听的是表头的排序按钮的点击事件，test是table原始容器的属性 lay-filter="对应的值"
+            //尽管我们的 table 自带排序功能，但并没有请求服务端。
+            //有些时候，你可能需要根据当前排序的字段，重新向服务端发送请求，从而实现服务端排序，如：
+            var dic = {courseid: "courseid", chapterid: "chapterid", createTime: 'create_time', subsectionid: 'subsectionid'};//定义好表格field 与数据库表字段的属性名的对应关系。
+            table.reload('dataTable', { //testTable是表格容器id
+                initSort: obj //记录初始排序，如果不设的话，将无法标记表头的排序状态。 layui 2.1.1 新增参数
+                , page: {
+                    curr: 1 //重新从第 1 页开始
+                }
+                , where: { //请求参数（注意：这里面的参数可任意定义，并非下面固定的格式）
+                    sortField: dic[obj.field] //排序字段 对应的表头参数的filed值，
+                    , order: obj.type //排序方式  desc||asc
+                    , stuName: $('#searchStuName').val()		//得到搜索框里已输入的数据,在表格中进行搜索
+                    , sno: $('#searchSno').val()
+                    , courseid: $('#searchCourseid').val()
+                    , chapterid: $('#searchChapterid').val()
+                    , subsectionid: $('#searchSubsectionid').val()
+                }
+            });
+        });
+
+        // 课程下拉选择框渲染(layui对select标签进行了重写，option的动态添加需使用如下方法）
+        $.ajax({
+            url: "/courseonline/course/getAll",
+            data: {},
+            type: "get",
+            dataType: "json",
+            success: function (data) {
+                $('#searchCourseid').empty();
+                $('#searchCourseid').append('<option value="">'+"请选择"+'</option>');
+                for (var i = 0; i <data.length ; i++) {
+                    $('#searchCourseid').append('<option value="'+data[i].id+'">'+data[i].title+'</option>');
+                }
+                // 定向渲染（一般当表单存在动态生成时，进行渲染）
+                form.render($('#searchCourseid')); // 传入需要渲染的相应表单元素的 jQuery 对象
+            }
+        });
+        // 章节下拉选择框渲染
+        form.on('select(searchCourseid)', function(data){
+            /*console.log(data.elem); //得到select原始DOM对象
+            console.log(data.value); //得到被选中的值
+            console.log(data.othis); //得到美化后的DOM对象*/
+            $.ajax({
+                url: "/courseonline/chapter/getByCourseid",
+                data: {courseid:data.value},
+                type: "get",
+                dataType: "json",
+                success: function (data) {
+                    $('#searchChapterid').empty();
+                    $('#searchChapterid').append('<option value="">'+"请选择"+'</option>');
+                    for (var i = 0; i <data.length ; i++) {
+                        $('#searchChapterid').append('<option value="'+data[i].id+'">'+data[i].title+'</option>');
+                    }
+                    // 定向渲染（一般当表单存在动态生成时，进行渲染）
+                    form.render($('#searchChapterid')); // 传入需要渲染的相应表单元素的 jQuery 对象
+                }
+            });
+        });
+        // 小节下拉选择框渲染
+        form.on('select(searchChapterid)', function(data){
+            $.ajax({
+                url: "/courseonline/subsection/getByChapterid",
+                data: {chapterid:data.value},
+                type: "get",
+                dataType: "json",
+                success: function (data) {
+                    $('#searchSubsectionid').empty();
+                    $('#searchSubsectionid').append('<option value="">'+"请选择"+'</option>');
+                    for (var i = 0; i <data.length ; i++) {
+                        $('#searchSubsectionid').append('<option value="'+data[i].id+'">'+data[i].title+'</option>');
+                    }
+                    // 定向渲染（一般当表单存在动态生成时，进行渲染）
+                    form.render($('#searchSubsectionid')); // 传入需要渲染的相应表单元素的 jQuery 对象
+                }
+            });
+        });
+    });
+    //layui插件结束
+
+    $(document).ready(function () {
+
+
+    });
+</script>
+</html>

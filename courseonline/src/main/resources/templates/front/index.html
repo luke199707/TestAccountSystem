@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<!--suppress ThymeleafVariablesResolveInspection -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>首页</title>
+    <!-- css -->
+    <link rel="stylesheet" th:href="@{/frontStyle/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/frontStyle/css/fontawesome.css}">
+    <link rel="stylesheet" th:href="@{/frontStyle/css/themify-icons.css}">
+    <link rel="stylesheet" th:href="@{/frontStyle/css/animate.min.css}">
+    <link rel="stylesheet" th:href="@{/frontStyle/css/owl.carousel.min.css}">
+    <link rel="stylesheet" th:href="@{/frontStyle/css/magnific-popup.css}">
+    <link rel="stylesheet" th:href="@{/frontStyle/css/metismenu.css}">
+    <link rel="stylesheet" th:href="@{/frontStyle/css/nice-select.css}">
+    <link rel="stylesheet" th:href="@{/frontStyle/css/jquery-ui.css}">
+    <link rel="stylesheet" th:href="@{/frontStyle/css/common.css}">
+    <link rel="stylesheet" th:href="@{/frontStyle/css/style.css}">
+    <link rel="stylesheet" th:href="@{/frontStyle/css/responsive.css}">
+</head>
+<body>
+    <!-- body wrap start -->
+    <div class="body_wrap">
+
+        <!-- backtotop - start -->
+        <div id="thetop"></div>
+        <div id="backtotop">
+            <a href="#" id="scroll">
+                <i class="fal fa-arrow-up"></i>
+                <i class="fal fa-arrow-up"></i>
+            </a>
+        </div>
+        <!-- backtotop - end -->
+
+        <!-- start Preloader  -->
+        <!--<div class="preloder_part">
+            <div class="spinner">
+                <div class="dot1"></div>
+                <div class="dot2"></div>
+            </div>
+        </div>-->
+        <!-- End Preloader  -->
+
+        <!-- header start -->
+        <header class="header_area" th:fragment="header(n)">
+            <div id="sticky-header" class="header_bottom white_bg pl-130 pr-130">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-xl-2 col-lg-2 col-6">
+                            <div class="logo">
+                                <a th:href="@{/frontlink/index}"><h1><strong>编译原理</strong></h1></a>
+                            </div>
+                        </div>
+                        <div class="col-xl-7 col-lg-8 d-none d-lg-block">
+                            <nav class="main_menu">
+                                <ul>
+                                    <li th:classappend="${n==null} ? 'active'"><a th:href="@{/frontlink/index}">首页</a></li>
+                                    <li th:classappend="${n==2} ? 'active'"><a th:href="@{/frontlink/notice}">通知公告</a></li>
+                                    <li class="has_dropdown" th:classappend="${n==3.1||n==3.2||n==3.3||n==3.4||n==3.5||n==3.6} ? 'active'">
+                                        <a href="#">课程信息</a>
+                                        <ul class="submenu">
+                                            <li th:classappend="${n==3.1} ? 'active'"><a th:href="@{/frontlink/courseInfo}">课程介绍</a></li>
+                                            <li th:classappend="${n==3.2} ? 'active'"><a th:href="@{/frontlink/courseOutline}">教学大纲</a></li>
+                                            <li th:classappend="${n==3.3} ? 'active'"><a th:href="@{/frontlink/courseCalendar}">教学日历</a></li>
+                                            <li th:classappend="${n==3.4} ? 'active'"><a th:href="@{/frontlink/courseLevelIIIProject}">三级项目实施计划书</a></li>
+                                            <li th:classappend="${n==3.5} ? 'active'"><a th:href="@{/frontlink/courseDesignPlan}">课程设计安排</a></li>
+                                            <li th:classappend="${n==3.6} ? 'active'"><a th:href="@{/frontlink/courseTeacher}">课程教师介绍</a></li>
+                                        </ul>
+                                    </li>
+                                    <li th:classappend="${n==4} ? 'active'"><a th:href="@{/frontlink/subsection}">教学视频</a></li>
+                                    <li th:classappend="${n==5} ? 'active'"><a th:href="@{/frontlink/material}">课件资料</a></li>
+                                    <li th:classappend="${n==6} ? 'active'"><a th:href="@{/frontlink/excellentWorks}">优秀作品</a></li>
+                                    <li th:classappend="${n==7} ? 'active'"><a th:href="@{/frontlink/contact}">联系我们</a></li>
+                                    <li class="has_dropdown" th:classappend="${n==0.1||n==0.2||n==0.3} ? 'active'" th:if="${session.loggingStudent!=null}">
+                                        <a href="#">个人中心</a>
+                                        <ul class="submenu">
+                                            <li th:classappend="${n==0.1} ? 'active'"><a th:href="@{/frontlink/studentInfo}">个人数据信息</a></li>
+                                            <li th:classappend="${n==0.2} ? 'active'"><a th:href="@{/frontlink/updatePwd}">密码修改</a></li>
+                                            <li th:classappend="${n==0.3} ? 'active'"><a th:href="@{/frontlink/questionReply}">问题反馈记录</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="col-xl-3 col-lg-2 col-6">
+                            <div class="header_right">
+                                <div class="hamburger_menu">
+                                    <a href="javascript:void(0);" class="">
+                                        <i class="fal fa-bars"></i>
+                                    </a>
+                                </div>
+                                <div class="account" th:if="${session.loggingStudent==null}">
+                                    <a th:href="@{/frontlink/login}"><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;登录</a>
+                                </div>
+                                <div class="account" th:if="${session.loggingStudent!=null}">
+                                    正在登录的用户是：<a th:href="@{/frontlink/studentInfo}"><strong>[[${session.loggingStudent.name}]]</strong></a>
+                                    <a th:href="@{/courseonline/student/logout}"><i class="fa fa-sign-out"></i>登出</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- header start -->
+
+        <!-- slide-bar start -->
+        <aside class="slide-bar" th:fragment="slide-bar">
+            <div class="close-mobile-menu">
+                <a href="javascript:void(0);"><i class="ti-close"></i></a>
+            </div>
+
+            <!-- sidebar-info start -->
+            <div class="sidebar-info">
+                <div class="sidebar-content mb-45">
+                    <h4 class="s-title">关于本课程</h4>
+                    <p>编译原理是计算机专业的一门重要专业课，旨在介绍编译程序构造的一般原理和基本方法。
+                        内容包括语言和文法、词法分析、语法分析、语法制导翻译、中间代码生成、存储管理、代码优化和目标代码生成。
+                        编译原理是计算机专业设置的一门重要的专业课程。</p>
+                    <a class="thm_btn" th:href="@{/frontlink/contact}">联系我们<i class="fal fa-long-arrow-right"></i></a>
+                </div>
+                <div class="s_contact-list mb-30">
+                    <h4 class="s-title">联系方式</h4>
+                    <div class="footer_widget pt-20">
+                        <ul>
+                            <li>
+                                <p>地址：燕山大学西校区信息馆1号楼528</p>
+                            </li>
+                            <li>
+                                <p>电话：17732907013</p>
+                            </li>
+                            <li>
+                                <p>邮箱：zhangjunhui@stumail.ysu.edu.cn</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- sidebar-info end -->
+
+            <!-- side-mobile-menu start -->
+            <nav class="side-mobile-menu">
+                <div class="header-mobile-search">
+                    <div class="account" th:if="${session.loggingStudent==null}">
+                        <a th:href="@{/frontlink/login}"><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;登录</a>
+                    </div>
+                    <div class="account" th:if="${session.loggingStudent!=null}">
+                        <a th:href="@{/frontlink/studentInfo}"><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;<strong>[[${session.loggingStudent.name}]]</strong></a>
+                        &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                        <a th:href="@{/courseonline/student/logout}"><i class="fa fa-sign-out"></i>登出</a>
+                    </div>
+                </div>
+                <ul id="mobile-menu-active">
+                    <li class="dropdown" th:if="${session.loggingStudent!=null}">
+                        <a href="#">个人中心</a>
+                        <ul class="sub-menu">
+                            <li><a th:href="@{/frontlink/studentInfo}">个人数据信息</a></li>
+                            <li><a th:href="@{/frontlink/updatePwd}">密码修改</a></li>
+                            <li><a th:href="@{/frontlink/questionReply}">问题反馈记录</a></li>
+                        </ul>
+                    </li>
+                    <li><a th:href="@{/frontlink/index}">首页</a></li>
+                    <li><a th:href="@{/frontlink/notice}">通知公告</a></li>
+                    <li><a th:href="@{/frontlink/courseInfo}">课程介绍</a></li>
+                    <li class="dropdown">
+                        <a href="#">课程信息</a>
+                        <ul class="sub-menu">
+                            <li><a th:href="@{/frontlink/courseInfo}">课程介绍</a></li>
+                            <li><a th:href="@{/frontlink/courseOutline}">教学大纲</a></li>
+                            <li><a th:href="@{/frontlink/courseCalendar}">教学日历</a></li>
+                            <li><a th:href="@{/frontlink/courseLevelIIIProject}">三级项目实施计划书</a></li>
+                            <li><a th:href="@{/frontlink/courseDesignPlan}">课程设计安排</a></li>
+                            <li><a th:href="@{/frontlink/courseTeacher}">课程教师介绍</a></li>
+                        </ul>
+                    </li>
+                    <li><a th:href="@{/frontlink/subsection}">教学视频</a></li>
+                    <li><a th:href="@{/frontlink/material}">课件资料</a></li>
+                    <li><a th:href="@{/frontlink/excellentWorks}">优秀作品</a></li>
+                    <li><a th:href="@{/frontlink/contact}">联系我们</a></li>
+                </ul>
+            </nav>
+            <!-- side-mobile-menu end -->
+        </aside>
+        <div class="body-overlay"></div>
+        <!-- slide-bar end -->
+
+        <main>
+            <!-- hero start -->
+            <section class="hero_area">
+                <div class="hero_wrap hero_height">
+                    <div class="container-fluid">
+                        <div class="row flex-row-reverse align-items-center">
+                            <div class="col-xl-7 col-lg-6 col-md-12">
+                                <div class="hero_img f-right">
+                                    <img th:src="@{/frontStyle/picture/hero_img.png}" alt="">
+                                </div>
+                            </div>
+                            <div class="col-xl-5 col-lg-6 col-md-12">
+                                <div class="hero_content">
+                                    <div class="icon">
+                                        <img th:src="@{/frontStyle/picture/hero_icon.png}" alt="">
+                                    </div>
+                                    <span># Learn Anything, Anytime, Anywhere</span>
+                                    <h2><strong>编译原理课程在线学习</strong></h2>
+                                    <p>编译原理是计算机专业的一门重要专业课，旨在介绍编译程序构造的一般原理和基本方法。内容包括语言和文法、词法分析、语法分析、语法制导翻译、中间代码生成、存储管理、代码优化和目标代码生成。</p>
+                                    <div class="hero_btn mt-15">
+                                        <a class="thm_btn" th:href="@{/frontlink/courseInfo}">课程介绍<i
+                                                class="fal fa-long-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- hero end -->
+
+            <!-- notice start -->
+            <section class="courses_cat_area pt-110 pb-120">
+                <div class="container">
+                    <div class="row align-items-center mb-25">
+                        <div class="col-lg-8 col-md-8">
+                            <div class="sec_title">
+                                <h2><strong>近期公告</strong></h2>
+                                <p>Online learning offers a new way to explore subjects you’re passionate about.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4">
+                            <div class="crs_btn text-md-end">
+                                <a class="thm_btn" th:href="@{/frontlink/notice}">查看更多<i class="fal fa-long-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-0" id="noticeBody">
+                        <!--<div class="col-lg-3 col-md-6">
+                            <div class="ct_single">
+                                <div class="ser_thumb mb-25">
+                                    <img th:src="@{/frontStyle/picture/s_01.png}" alt="">
+                                </div>
+                                <h3><a href="#"><strong>标题</strong></a></h3>
+                                <span>2022-07-25 16:06</span>
+                                <div class="ser_icon pt-25">
+                                    <a href="#"><i class="fal fa-long-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>-->
+                    </div>
+                </div>
+            </section>
+            <!-- notice end -->
+
+            <!-- course start -->
+            <section class="about_area white_bg pt-120 pb-90">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <div class="about_img mb-30">
+                                <img th:src="@{/frontStyle/picture/about_img.png}" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="about_content mb-30">
+                                <div class="sec_title">
+                                    <h2><strong>学习知识，提升自我</strong></h2>
+                                    <p>Rorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam, quis nostrudye.
+                                        magna aliqua Utey Tim ad minim veniam, quis nostrudye.</p>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <div class="al_signle">
+                                            <span><i class="fal fa-check"></i>Expert Trainer</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <div class="al_signle">
+                                            <span><i class="fal fa-check"></i>Remote Learning</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <div class="al_signle">
+                                            <span><i class="fal fa-check"></i>Lifetime Access</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <div class="al_signle">
+                                            <span><i class="fal fa-check"></i>Self Development</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="about_btn mt-10">
+                                    <a class="thm_btn" th:href="@{/frontlink/subsection}">观看课程视频<i
+                                            class="fal fa-long-arrow-right"></i></a>
+                                    <a class="thm_btn thm_btn-2" th:href="@{/frontlink/material}">获取课件资料<i
+                                            class="fal fa-long-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- course end -->
+
+            <!-- excellentWorks start -->
+            <section class="courses_area pt-120 pb-90">
+                <div class="container">
+                    <div class="row align-items-center mb-15">
+                        <div class="col-lg-8 col-md-8">
+                            <div class="sec_title">
+                                <h2><strong>优秀作品展示</strong></h2>
+                                <p>Online learning offers a new way to explore subjects you’re passionate about.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4">
+                            <div class="crs_btn text-md-end mb-20">
+                                <a class="thm_btn" th:href="@{/frontlink/excellentWorks}">查看更多<i class="fal fa-long-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="excellentWorksBody">
+                        <!--<div class="col-lg-4 col-md-6">
+                            <div class="course_single mb-30">
+                                <div class="course_content">
+                                    <div class="c_head">
+                                        <span class="cat">作者</span>
+                                    </div>
+                                    <h3 class="title"><a href="#">标题</a></h3>
+                                    <div class="rating_wrap ul_li">
+                                        <ul class="rating_star ul_li">
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>-->
+                    </div>
+                </div>
+            </section>
+            <!-- excellentWorks end -->
+
+            <!-- bai start -->
+            <section class="bai_area bai_bootom_space" th:fragment="bai">
+                <div class="container">
+                    <div class="row g-0">
+                        <div class="col-lg-6">
+                            <div class="bai_wrap bai_left theme_bg">
+                                <span># 注册账号，获取更多课程资料</span>
+                                <h3>Register Now</h3>
+                                <a class="thm_btn thm_btn-border" th:href="@{/frontlink/signUp}">立即注册<i class="fal fa-long-arrow-right"></i></a>
+                                <div class="bai_shape">
+                                    <img th:src="@{/frontStyle/picture/bai_shape_01.png}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="bai_wrap bai_right white_bg">
+                                <span># 有任何疑问或建议</span>
+                                <h3>Contact us</h3>
+                                <a class="thm_btn thm_btn-2" th:href="@{/frontlink/contact}">联系我们<i class="fal fa-long-arrow-right"></i></a>
+                                <div class="bai_shape">
+                                    <img th:src="@{/frontStyle/picture/bai_shape_02.png}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- bai end -->
+        </main>
+
+        <!-- footer start -->
+        <footer class="footer_area footer_bg footer_space" th:fragment="footer">
+            <div class="container">
+                <div class="subscribe_wrap">
+                    <div class="row">
+                        <div class="col-lg-5 col-md-6">
+                            <div class="footer_widget">
+                                <h3><strong>关于本课程</strong></h3>
+                                <div class="about_text">
+                                    <p>编译原理是计算机专业的一门重要专业课，旨在介绍编译程序构造的一般原理和基本方法。
+                                        内容包括语言和文法、词法分析、语法分析、语法制导翻译、中间代码生成、存储管理、代码优化和目标代码生成。
+                                        编译原理是计算机专业设置的一门重要的专业课程。</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--<div class="col-lg-2 col-md-6">
+                            <div class="footer_widget footer_link-left">
+                                <h3>Categories</h3>
+                                <ul class="footer_link">
+                                    <li><a href="#">All Courses</a></li>
+                                    <li><a href="#">Design Courses</a></li>
+                                    <li><a href="#">Branding Design</a></li>
+                                    <li><a href="#">Business</a></li>
+                                    <li><a href="#">Architecture</a></li>
+                                    <li><a href="#">Digital Branding</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer_widget footer_link-right">
+                                <h3>Support</h3>
+                                <ul class="footer_link">
+                                    <li><a href="#">Contact Support</a></li>
+                                    <li><a href="#">System Requermnet</a></li>
+                                    <li><a href="#">Site Feedback</a></li>
+                                    <li><a href="#">Register Activation Key</a></li>
+                                    <li><a href="#">24/7 Service</a></li>
+                                    <li><a href="#">System Requerment</a></li>
+                                </ul>
+                            </div>
+                        </div>-->
+                        <div class="col-lg-5 col-md-6 offset-lg-2">
+                            <div class="footer_widget footer_right_text">
+                                <h3><strong>联系方式</strong></h3>
+                                <ul>
+                                    <li>
+                                        <p>地址：燕山大学西校区信息馆1号楼528</p>
+                                    </li>
+                                    <li>
+                                        <p>电话：17732907013</p>
+                                    </li>
+                                    <li>
+                                        <p>邮箱：zhangjunhui@stumail.ysu.edu.cn</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        &nbsp;&nbsp;&nbsp;
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- footer end -->
+    </div>
+    <!-- body wrap end -->
+    <!-- js -->
+    <script th:src="@{/frontStyle/js/jquery-3.5.1.min.js}"></script>
+    <script th:src="@{/frontStyle/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/frontStyle/js/owl.carousel.min.js}"></script>
+    <script th:src="@{/frontStyle/js/metismenu.min.js}"></script>
+    <script th:src="@{/frontStyle/js/wow.min.js}"></script>
+    <script th:src="@{/frontStyle/js/jquery.nice-select.min.js}"></script>
+    <script th:src="@{/frontStyle/js/jquery-ui.js}"></script>
+    <script th:src="@{/frontStyle/js/isotope.pkgd.min.js}"></script>
+    <script th:src="@{/frontStyle/js/imagesloaded.pkgd.min.js}"></script>
+    <script th:src="@{/frontStyle/js/jquery.magnific-popup.min.js}"></script>
+    <script th:src="@{/frontStyle/js/main.js}"></script>
+</body>
+<script>
+    function noticeRender(){
+        // 获取前八条公告信息
+        $.ajax({
+            url: "/courseonline/notice/getNoticeTop",
+            data: {N:8},
+            type: "get",
+            dataType: "json",
+            success: function (data) {
+                var htmlStr = "";
+                $.each(data, function (i, n) {
+                    htmlStr += "<div class=\"col-lg-3 col-md-6\">";
+                    htmlStr += "<div class=\"ct_single\">";
+                    htmlStr += "<div class=\"ser_thumb mb-25\">";
+                    htmlStr += "<img src=\"/frontStyle/picture/s_0"+(i+1)+".png\" alt=\"\">";
+                    htmlStr += "</div>";
+                    htmlStr += "<h3><a href=\"/frontlink/noticeDetails?id="+n.id+"\"><strong>"+n.title+"</strong></a></h3>";
+                    htmlStr += "<span>"+n.createTime+"</span>";
+                    htmlStr += "<div class=\"ser_icon pt-25\">";
+                    htmlStr += "<a href=\"/frontlink/noticeDetails?id="+n.id+"\"><i class=\"fal fa-long-arrow-right\"></i></a>";
+                    htmlStr += "</div>";
+                    htmlStr += "</div>";
+                    htmlStr += "</div>";
+                })
+                $("#noticeBody").html(htmlStr);
+            }
+        });
+    };
+    function excellentWorksRender(){
+        // 获取前三条作品信息
+        $.ajax({
+            url: "/courseonline/excellentworks/getWorksTop",
+            data: {N:3},
+            type: "get",
+            dataType: "json",
+            success: function (data) {
+                var htmlStr = "";
+                $.each(data, function (i, n) {
+                    htmlStr += "<div class=\"col-lg-4 col-md-6\">";
+                    htmlStr += "<div class=\"course_single mb-30\">";
+                    htmlStr += "<div class=\"course_content\">";
+                    htmlStr += "<div class=\"c_head\">";
+                    htmlStr += "<span class=\"cat\">"+n.author+"</span>";
+                    htmlStr += "</div>";
+                    htmlStr += "<h3 class=\"title\"><a href=\"/frontlink/excellentWorksDetails?id="+n.id+"\">"+n.name+"</a></h3>";
+                    htmlStr += "<div class=\"rating_wrap ul_li\">";
+                    htmlStr += "<ul class=\"rating_star ul_li\">";
+                    htmlStr += "<ul class=\"rating_star ul_li\">";
+                    htmlStr += "<li><i class=\"fas fa-star\"></i></li>" +
+                               "<li><i class=\"fas fa-star\"></i></li>" +
+                               "<li><i class=\"fas fa-star\"></i></li>" +
+                               "<li><i class=\"fas fa-star\"></i></li>" +
+                               "<li><i class=\"fas fa-star\"></i></li>";
+                    htmlStr += "</ul></div></div></div></div>";
+                })
+                $("#excellentWorksBody").html(htmlStr);
+            }
+        });
+    };
+    $(document).ready(function () {
+        // 公告数据渲染
+        noticeRender();
+        // 优秀作品数据渲染
+        excellentWorksRender();
+    });
+</script>
+</html>

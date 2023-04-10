@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lc.courseonline.mapper.CourseCalendarMapper">
+    <resultMap id="BaseResultMap" type="com.lc.courseonline.entity.CourseCalendar" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="courseid" property="courseid" jdbcType="VARCHAR" />
+        <result column="mainContent" property="mainContent" jdbcType="VARCHAR" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <!--分页条件查询(offset关键字SQLServer2012以后版本才支持)-->
+    <select id="selectCourseCalendarByConditionForPage" resultMap="BaseResultMap" parameterType="map">
+        WITH selectTemp AS (SELECT TOP 100 PERCENT ROW_NUMBER() OVER (ORDER BY c.${sortField} ${order}) as __row_number__,
+        c.id,ci.title as courseid,c.mainContent,c.create_time,c.update_time
+        from courseCalendar c
+        join courseInfo ci on c.courseid=ci.id
+        ORDER BY c.${sortField} ${order})
+        SELECT * FROM selectTemp WHERE __row_number__ BETWEEN (#{page}-1)*#{limit}+1 AND #{page}*#{limit} ORDER BY __row_number__
+    </select>
+
+    <!--条件统计-->
+    <select id="selectCountOfCourseCalendarByCondition" parameterType="map" resultType="int">
+        select count(*)
+        from courseCalendar c
+        join courseInfo ci on c.courseid=ci.id
+    </select>
+
+    <!--通过课程id删除-->
+    <delete id="deleteByCourseId" parameterType="String" >
+        delete from courseCalendar
+        where courseid = #{courseid}
+    </delete>
+</mapper>

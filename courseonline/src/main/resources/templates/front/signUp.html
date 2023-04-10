@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<!--suppress ThymeleafVariablesResolveInspection -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>注册</title>
+    <!-- css -->
+    <link rel="stylesheet" th:href="@{/frontStyle/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/frontStyle/css/fontawesome.css}">
+    <link rel="stylesheet" th:href="@{/frontStyle/css/themify-icons.css}">
+    <link rel="stylesheet" th:href="@{/frontStyle/css/animate.min.css}">
+    <link rel="stylesheet" th:href="@{/frontStyle/css/owl.carousel.min.css}">
+    <link rel="stylesheet" th:href="@{/frontStyle/css/magnific-popup.css}">
+    <link rel="stylesheet" th:href="@{/frontStyle/css/metismenu.css}">
+    <!--<link rel="stylesheet" th:href="@{/frontStyle/css/nice-select.css}">-->
+    <link rel="stylesheet" th:href="@{/frontStyle/css/jquery-ui.css}">
+    <link rel="stylesheet" th:href="@{/frontStyle/css/common.css}">
+    <link rel="stylesheet" th:href="@{/frontStyle/css/style.css}">
+    <link rel="stylesheet" th:href="@{/frontStyle/css/responsive.css}">
+</head>
+<body>
+    <!-- body wrap start -->
+    <div class="body_wrap">
+
+        <!-- backtotop - start -->
+        <div id="thetop"></div>
+        <div id="backtotop">
+            <a href="#" id="scroll">
+                <i class="fal fa-arrow-up"></i>
+                <i class="fal fa-arrow-up"></i>
+            </a>
+        </div>
+        <!-- backtotop - end -->
+
+        <!-- start Preloader  -->
+        <!--<div class="preloder_part">
+            <div class="spinner">
+                <div class="dot1"></div>
+                <div class="dot2"></div>
+            </div>
+        </div>-->
+        <!-- End Preloader  -->
+
+        <!-- header start -->
+        <div th:replace="front/index :: header(8)"></div>
+        <!-- header start -->
+
+        <!-- slide-bar start -->
+        <div th:replace="front/index :: slide-bar"></div>
+        <div class="body-overlay"></div>
+        <!-- slide-bar end -->
+
+        <main>
+            <!-- page title start -->
+            <section class="page_title_area" data-overlay="6" data-background="/frontStyle/images/page_title.jpg">
+                <div class="containe">
+                    <div class="row">
+                        <div class="col-l2">
+                            <div class="page_title text-center">
+                                <h2>注册</h2>
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb justify-content-center">
+                                        <li class="breadcrumb-item">
+                                            <a th:href="@{/frontlink/index}">Home</a>
+                                        </li>
+                                        <li class="breadcrumb-item active" aria-current="page">Sign Up</li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- page title end -->
+
+            <!-- sign up start -->
+            <section class="checkout_area pt-120 pb-120">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="checkout_wrap">
+                                <div class="radio_wrap">
+                                    <h3><strong>注册</strong></h3>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xl-12 col-lg-12">
+                                        <form id="signUpForm" class="form_wrap" th:action="@{/courseonline/student/add}" method="post">
+                                            <div class="row">
+                                                <div class="col-xl-6 col-lg-6">
+                                                    <label>学号<span>*</span></label>
+                                                    <label for="sno" class="error" style="color: red"></label>
+                                                    <input id="sno" name="sno" type="text" placeholder="学号">
+                                                </div>
+                                                <div class="col-xl-6 col-lg-6">
+                                                    <label>姓名<span>*</span></label>
+                                                    <label for="name" class="error" style="color: red"></label>
+                                                    <input id="name" name="name" type="text" placeholder="姓名">
+                                                </div>
+                                                <div class="col-xl-6 col-lg-6">
+                                                    <label>密码<span>*</span></label>
+                                                    <label for="pwd" class="error" style="color: red"></label>
+                                                    <input id="pwd" name="pwd" type="password" placeholder="密码">
+                                                </div>
+                                                <div class="col-xl-6 col-lg-6">
+                                                    <label>再次输入密码<span>*</span></label>
+                                                    <label for="pwdRepeat" class="error" style="color: red"></label>
+                                                    <input id="pwdRepeat" name="pwdRepeat" type="password" placeholder="再次输入密码">
+                                                </div>
+                                                <div class="col-xl-12 col-lg-12">
+                                                    <label>邮箱<span>*</span></label>
+                                                    <label for="email" class="error" style="color: red"></label>
+                                                    <input id="email" name="email" type="email" placeholder="邮箱">
+                                                </div>
+                                                <div class="col-xl-12 col-lg-12">
+                                                    <label>学院<span>*</span></label>
+                                                    <label for="department" class="error" style="color: red"></label>
+                                                    <div class="filter">
+                                                        <select id="department" name="department" onchange="gradeBoxRender(this.options[this.options.selectedIndex].value)" required>
+                                                            <option value="">请选择</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-12 col-lg-12">
+                                                    <label>年级<span>*</span></label>
+                                                    <label for="grade" class="error" style="color: red"></label>
+                                                    <div class="filter">
+                                                        <select id="grade" name="grade" onchange="sclassBoxRender(this.options[this.options.selectedIndex].value)" required>
+                                                            <option value="">请选择</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-12 col-lg-12">
+                                                    <label>班级<span>*</span></label>
+                                                    <label for="sclass" class="error" style="color: red"></label>
+                                                    <div class="filter">
+                                                        <select id="sclass" name="sclass" required>
+                                                            <option value="">请选择</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-12 col-lg-12">
+                                                    <label>专业<span>*</span></label>
+                                                    <label for="subject" class="error" style="color: red"></label>
+                                                    <input id="subject" name="subject" type="text" placeholder="专业">
+                                                </div>
+                                                <div class="col-xl-12 col-lg-12">
+                                                    <button class="thm_btn" type="submit">确认注册</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- sign up end -->
+
+            <!-- bai start -->
+            <div th:replace="front/index :: bai"></div>
+            <!-- bai end -->
+        </main>
+
+        <!-- footer start -->
+        <div th:replace="front/index :: footer"></div>
+        <!-- footer end -->
+    </div>
+    <!-- body wrap end -->
+    <!-- js -->
+    <script th:src="@{/frontStyle/js/jquery-3.5.1.min.js}"></script>
+    <script th:src="@{/frontStyle/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/frontStyle/js/owl.carousel.min.js}"></script>
+    <script th:src="@{/frontStyle/js/metismenu.min.js}"></script>
+    <script th:src="@{/frontStyle/js/wow.min.js}"></script>
+    <!--<script th:src="@{/frontStyle/js/jquery.nice-select.min.js}"></script>-->
+    <script th:src="@{/frontStyle/js/jquery-ui.js}"></script>
+    <script th:src="@{/frontStyle/js/isotope.pkgd.min.js}"></script>
+    <script th:src="@{/frontStyle/js/imagesloaded.pkgd.min.js}"></script>
+    <script th:src="@{/frontStyle/js/jquery.magnific-popup.min.js}"></script>
+    <script th:src="@{/frontStyle/js/main.js}"></script>
+    <script th:src="@{/plugins/validate/jquery.validate.min.js}"></script>
+    <script th:src="@{/plugins/validate/messages_zh.js}"></script>
+</body>
+<script>
+    $(document).ready(function () {
+        //表单校验
+        $("#signUpForm").validate({
+            // 失去焦点就验证
+            onfocusout: function(element) { $(element).valid(); },
+            rules: {
+                sno: {
+                    required:true,
+                    remote:{
+                        type: "GET",
+                        url: "/courseonline/student/addCheckParams",
+                        data:{
+                            param : "sno",
+                            value : function() {
+                                return $("#sno").val();
+                            }
+                        }
+                    }
+                }
+                ,name: "required"
+                ,pwd: {required:true, rangelength:[3,20]}
+                ,pwdRepeat: {required:true, rangelength:[3,20], equalTo:"#pwd"}
+                ,email: {
+                    required:true,
+                    remote:{
+                        type: "GET",
+                        url: "/courseonline/student/addCheckParams",
+                        data:{
+                            param : "email",
+                            value : function() {
+                                return $("#email").val();
+                            }
+                        }
+                    }
+                }
+                ,subject: "required"
+            },
+            messages: {
+                sno: {remote: "该学号已注册！"}
+                ,pwdRepeat: {equalTo: "两次密码输入不一致！"}
+                ,email: {remote: "该邮箱已注册！"}
+            }
+        });
+
+        selectionBoxRender();
+    });
+    //学院下拉选择框渲染
+    function selectionBoxRender(){
+        $.ajax({
+            url: "/courseonline/department/getAll",
+            data: {},
+            type: "get",
+            dataType: "json",
+            success: function (data) {
+                $('#department').empty();
+                $('#department').append('<option value="">'+"请选择"+'</option>');
+                for (var i = 0; i <data.length ; i++) {
+                    $('#department').append('<option value="'+data[i].id+'">'+data[i].name+'</option>');
+                }
+            }
+        });
+    };
+    //年级下拉选择框渲染
+    function gradeBoxRender(departmentId){
+        $.ajax({
+            url: "/courseonline/grade/getByDepartmentId",
+            data: {departmentId:departmentId},
+            type: "get",
+            dataType: "json",
+            success: function (data) {
+                $('#grade').empty();
+                $('#grade').append('<option value="">'+"请选择"+'</option>');
+                for (var i = 0; i <data.length ; i++) {
+                    $('#grade').append('<option value="'+data[i].id+'">'+data[i].name+'</option>');
+                }
+            }
+        });
+    };
+    //班级下拉选择框渲染
+    function sclassBoxRender(gradeId){
+        $.ajax({
+            url: "/courseonline/sclass/getByGrade",
+            data: {grade:gradeId},
+            type: "get",
+            dataType: "json",
+            success: function (data) {
+                $('#sclass').empty();
+                $('#sclass').append('<option value="">'+"请选择"+'</option>');
+                for (var i = 0; i <data.length ; i++) {
+                    $('#sclass').append('<option value="'+data[i].id+'">'+data[i].name+'</option>');
+                }
+            }
+        });
+    };
+</script>
+</html>
