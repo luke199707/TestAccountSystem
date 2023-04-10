@@ -1,0 +1,471 @@
+﻿body
+{
+    font-family: 微软雅黑;
+    font-size: 13px;
+    line-height: 1.428571429;
+    color: #333333;
+    background-color: #eff0f0;
+}
+
+.userUL > li
+{
+    line-height: 34px;
+    height: 34px;
+    border-left: 1px solid #DDD;
+    padding: 0;
+    position: relative;
+    float: left !important;
+}
+
+a
+{
+    color: #000;
+    text-decoration: none;
+}
+
+
+a:focus, a:active, a:hover
+{
+    color: #000;
+    text-decoration: none;
+}
+.MenuUL
+{
+    background: url('../Image/Common/menubg.png');
+}
+.MenuUL > li
+{
+    line-height: 40px;
+    height: 44px;
+    padding: 0;
+    position: relative;
+    width: 14.2%;
+    float: left !important;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.MenuUL > li > a:hover, .MenuUL > li > a:focus
+{
+    background: url('../Image/Common/menu_hoverbg.png');
+}
+
+.m_line
+{
+    float: left;
+    width: 1px;
+    height: 40px;
+    line-height: 40px; /*ff下有效(图片垂直居中)*/
+}
+.m_line img
+{
+    margin-top: expression(( 40 - this.height ) / 2); /*ie下有效(图片垂直居中)*/
+}
+
+
+.myCarouselbg
+{
+    background-color: #ddd;
+    background-repeat: repeat-x;
+    position: relative;
+}
+.mainbodybg
+{
+    background-color: #00a0e9;
+    background-repeat: repeat-x;
+    position: relative;
+}
+
+.block-content
+{
+    min-height: 100px;
+}
+
+.btnimg
+{
+    cursor: pointer;
+}
+
+
+.ProductUL
+{
+    width: 900px;
+    background-color: #000;
+    color: #fff;
+    margin-left: -200px;
+    opacity: 0.7;
+    border-top: 0px;
+    border-bottom-color: #ffc600;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+}
+
+.ProductUL > li a
+{
+    color: #fff;
+}
+
+.ProductUL > li a:focus
+{
+    background-color: transparent;
+}
+.ProductUL > li a:hover
+{
+    background-color: transparent;
+}
+
+.CultureUL
+{
+    width: 530px;
+    background-color: #000;
+    color: #fff;
+    opacity: 0.7;
+    margin-left: -80px;
+    border-top: 0px;
+    border-bottom-color: #ffc600;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+}
+.CultureUL > li a
+{
+    color: #fff;
+}
+
+.CultureUL > li a:focus
+{
+    background-color: transparent;
+}
+.CultureUL > li a:hover
+{
+    background-color: transparent;
+}
+.DownloadUL
+{
+    width: 530px;
+    background-color: #000;
+    color: #fff;
+    opacity: 0.7;
+    margin-left: -100px;
+    border-top: 0px;
+    border-bottom-color: #ffc600;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+}
+.DownloadUL > li a
+{
+    color: #fff;
+}
+
+.DownloadUL > li a:focus
+{
+    background-color: transparent;
+}
+.DownloadUL > li a:hover
+{
+    background-color: transparent;
+}
+.ContactUL
+{
+    width: 380px;
+    background-color: #000;
+    color: #fff;
+    opacity: 0.7;
+    margin-left: -100px;
+    border-top: 0px;
+    border-bottom-color: #ffc600;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+}
+.ContactUL > li a
+{
+    color: #fff;
+}
+
+.ContactUL > li a:focus
+{
+    background-color: transparent;
+}
+.ContactUL > li a:hover
+{
+    background-color: transparent;
+}
+
+
+.modal-header
+{
+    padding: 0 !important;
+}
+
+.modal-content
+{
+    background-color: transparent;
+}
+
+#WeeklyModal .modal-dialog
+{
+    width: 900px;
+}
+
+#WeeklyModal .modal-header
+{
+    background: transparent;
+    height: 30px;
+    border-bottom: 0px;
+}
+
+#WeeklyModal .modal-body
+{
+    background: transparent;
+    padding: 0px;
+    height: 600px;
+}
+
+#HonorModal .modal-dialog
+{
+    width: 292px;
+}
+
+#HonorModal .modal-header
+{
+    background: transparent;
+    height: 30px;
+    border-bottom: 0px;
+}
+
+#HonorModal .modal-body
+{
+    background: transparent;
+    padding: 0px;
+}
+
+#ProductParaModal .modal-dialog
+{
+    width: 480px;
+}
+
+#ProductParaModal .modal-header
+{
+    background: transparent;
+    height: 30px;
+    border-bottom: 0px;
+}
+
+#ProductParaModal .modal-body
+{
+    background: transparent;
+    padding: 0px;
+}
+
+.mousepositionimg
+{
+    border-top: 4px;
+    border-top-color: #ffc900;
+    border-top-style: solid;
+    border-bottom: 0px;
+    border-left: 0px;
+    border-right: 0px;
+}
+
+.positiontitle
+{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin-left: 30%;
+    margin-bottom: 50px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+.ProductPageUL
+{
+    color: #000;
+    opacity: 0.7;
+}
+
+.ProductPageUL > li
+{
+    list-style-type: none;
+}
+
+.ProductPageUL > li a
+{
+    color: #000;
+    font-size: 14px;
+}
+
+.ProductPageUL > li a:focus
+{
+    background-color: transparent;
+}
+.ProductPageUL > li a:hover
+{
+    background-color: transparent;
+}
+
+.productlist-li
+{
+    height: 156px;
+    width: 255px;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.product-title
+{
+    font-size: 13px;
+    float: left;
+    padding-left: 5px;
+    padding-right: 5px;
+    text-align: center;
+    width: 255px;
+}
+
+.product-imgdisplay
+{
+    height: 130px;
+    width: 255px;
+    margin-bottom: 0px;
+    
+}
+
+
+/**/
+.mod_box
+{
+    font-size: 14px;
+    line-height: 24px;
+}
+.mod_box .th
+{
+    margin-bottom: 10px;
+}
+.mod_box .tb
+{
+    padding-bottom: 27px;
+}
+.mod_box .txt
+{
+    text-indent: 2em;
+}
+.mod_tit
+{
+    color: #5d9bcf;
+    font: 24px/35px "微软雅黑" , "宋体";
+}
+.mod_line
+{
+    border-top: 1px solid #ccdfed;
+    height: 15px;
+    margin-top: 15px;
+    position: relative;
+}
+.mod_line .mod_tit
+{
+    background-color: #fff;
+    left: 0;
+    padding-right: 10px;
+    position: absolute;
+    top: -20px;
+}
+.events_list
+{
+    line-height: 24px;
+}
+.events_list dt
+{
+    color: #9bcaf4;
+    float: left;
+    font-size: 16px;
+    padding-right: 12px;
+    position: relative;
+    text-align: right;
+    width: 76px;
+    z-index: 3;
+}
+.events_list .dot
+{
+    background-position: -1px -31px;
+    height: 14px;
+    overflow: hidden;
+    position: absolute;
+    right: -6px;
+    top: 6px;
+    width: 9px;
+}
+.events_list dd
+{
+    border-left: 3px solid #d7e9f9;
+    float: left;
+    padding: 0 0 20px 10px;
+    width: 659px;
+}
+.events_list p
+{
+    padding: 0 0 1px 58px;
+    position: relative;
+}
+.events_list .time
+{
+    background-position: -25px 0;
+    font-size: 12px;
+    height: 23px;
+    left: 0;
+    padding-left: 4px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 45px;
+}
+.events_list .first
+{
+    padding-top: 31px;
+}
+.events_list .start
+{
+    background-position: -4px 0;
+    height: 25px;
+    overflow: hidden;
+    position: absolute;
+    right: -3px;
+    top: -25px;
+    width: 3px;
+}
+.events_list .time, .events_list .dot, .events_list .start
+{
+    background: url("../Image/Common/skin_about.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.clearfix:after
+{
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+.clearfix
+{
+}
+
+.backToTop
+{
+    display: none;
+    width: 24px;
+    line-height: 1.2;
+    padding: 5px 0;
+    background-color: #00428e;
+    color: #fff;
+    font-size: 13px;
+    text-align: center;
+    position: fixed;
+    _position: absolute;
+    right: 100px;
+    bottom: 100px;
+    _bottom: "auto";
+    cursor: pointer;
+    opacity: .7;
+    filter: Alpha(opacity=70);
+}

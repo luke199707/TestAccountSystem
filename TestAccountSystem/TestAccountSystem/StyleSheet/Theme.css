@@ -1,0 +1,144 @@
+﻿body
+{
+    background-position: left top;
+    padding-top: 0px;
+    padding-bottom: 30px; /* background-image: url('../DocsAssets/Image/bg.png');     background-color: rgb(236, 236, 236); background-attachment: scroll;     background-repeat: repeat; */
+    font-family: 微软雅黑;
+}
+
+.container
+{
+    background-color: rgb(256, 256, 256);
+}
+
+.theme-dropdown .dropdown-menu
+{
+    display: block;
+    position: static;
+    margin-bottom: 20px;
+}
+
+.theme-showcase > p > .btn
+{
+    margin: 5px 0;
+}
+
+
+.banner
+{
+    height: 97px;
+    vertical-align: bottom;
+}
+
+/*左侧菜单*/
+.left-menu
+{
+    margin-top: 5px;
+    padding-left: 0;
+    font-size: 13px;
+}
+.left-menu ul
+{
+    margin-top: 2px;
+    margin-bottom: 0px;
+    list-style: none;
+    font-weight: bold;
+}
+
+.left-menu li
+{
+    cursor: pointer;
+    padding-left: 25px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-weight: normal;
+    height: 23px;
+}
+.left-menu li a:hover
+{
+    color: #0000ff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.left-menu-focus
+{
+    color: #0000ff;
+    font-weight: bold; /* background: url("../DocsAssets/Image/circle.jpg");*/
+}
+
+.Login-PanelHeight
+{
+    overflow: hidden;
+    min-height: 450px;
+}
+
+.PanelHeight
+{
+    overflow: hidden;
+    min-height: 580px;
+}
+
+.FooterSize
+{
+    font-size: 14px;
+}
+
+
+/* star */
+*
+{
+     list-style-type: none;   }
+.star
+{
+   
+    position: relative;
+    width: 800px;
+    margin: 5px auto;
+    height: 24px;
+}
+.star ul, .star span
+{
+    float: left;
+    display: inline;
+    height: 19px;
+    line-height: 19px;
+}
+.star ul
+{
+    margin: 0 10px;
+}
+.star li
+{
+    float: left;
+    width: 24px;
+    cursor: pointer;
+    text-indent: -9999px;
+    background: url(../images/star.png) no-repeat;
+}
+.star strong
+{
+    color: #f60;
+    padding-left: 10px;
+}
+.star li.on
+{
+    background-position: 0 -28px;
+}
+.star p
+{
+    position: absolute;
+    top: 20px;
+    width: 159px;
+    height: 60px;
+    display: none;
+    background: url(../images/icon.gif) no-repeat;
+    padding: 7px 10px 0;
+    z-index: 1;
+}
+.star p em
+{
+    color: #f60;
+    display: block;
+    font-style: normal;
+}

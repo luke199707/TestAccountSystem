@@ -1,0 +1,39 @@
+﻿
+#dowebok .inner
+{
+    width: 960px;
+    height: 100%;
+}
+
+#dowebok .index_section1
+{
+    background: url(../images/1.jpg) 50% 0 no-repeat;
+}
+#dowebok .index_section2
+{
+    background: url(../images/2.jpg) 50% 0 no-repeat;
+}
+
+#dowebok .index_section3
+{
+    background: url(../images/3.jpg) 50% 0 no-repeat;
+}
+
+#dowebok .index_section4
+{
+    background: url(../images/4.jpg) 50% 0 no-repeat;
+}
+
+#dowebok .copy
+{
+    height: 50px;
+}
+#dowebok .copy p
+{
+    width: 100%;
+    padding: 0;
+    line-height: 18px;
+    font-size: 12px;
+    text-align: center;
+    color: #a1a1a1;
+}

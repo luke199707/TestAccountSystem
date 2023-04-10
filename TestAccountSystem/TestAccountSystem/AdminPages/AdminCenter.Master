@@ -1,0 +1,85 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AdminCenter.master.cs" Inherits="TestAccountSystem.AdminPages.AdminCenter" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="Keywords" content=" 船级社检验计费管理系统" />
+    <meta name="description" content=" 船级社检验计费管理系统" />
+    <meta name="author" content="" />
+    <title>船级社检验计费管理系统</title>
+    <!-- Bootstrap core CSS -->
+    <link href="../StyleSheet/bootstrap.css" rel="stylesheet" />
+    <%-- <link href="~/StyleSheet/bootstrap.css" rel="stylesheet" type="text/css" />--%>
+    <link href="../StyleSheet/font-awesome-4.3.0/css/font-awesome.css" rel="stylesheet" type="text/css" />
+    <!-- Bootstrap theme -->
+    <link href="../StyleSheet/bootstrap-theme.css" rel="stylesheet" type="text/css" />
+    <!-- Custom styles for this template -->
+    <link href="../StyleSheet/Theme.css" rel="stylesheet" type="text/css" />
+    <link href="../StyleSheet/jquery.qtip.min.css" rel="stylesheet" type="text/css" />
+    <link href="../StyleSheet/AdminTheme.css" rel="stylesheet" type="text/css" />
+    <link href="../Scripts/fancybox2.1.5/source/jquery.fancybox.css" rel="stylesheet" />
+    <link href="../Scripts/layer-v1.8.5/layer/skin/layer.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        input.error {
+            border: 1px solid red;
+        }
+
+        label.error {
+            margin-left: 5px;
+            vertical-align: top;
+            margin-top: 5px;
+            color: red;
+        }
+    </style>
+    <script src="../Scripts/jquery.min.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery.qtip.min.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery.validate.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery.metadata.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery.validate.messages_cn.js" type="text/javascript"></script>
+    <script src="../Scripts/additional-methods.js" type="text/javascript"></script>
+    <script src="../Scripts/chan.common.js" type="text/javascript"></script>
+    <!-- ace settings handler -->
+    <script src="../Scripts/ace-extra.min.js" type="text/javascript"></script>
+    <script src="../Scripts/modernizr-latest.js" type="text/javascript"></script>
+    <%--<script src="../WeChat/layui/layui.js" type="text/javascript"></script>--%>
+    <script src="../Scripts/layer-v1.8.5/layer/layer.min.js" type="text/javascript"></script>
+    <script src="../Scripts/fancybox2.1.5/source/jquery.fancybox.js" type="text/javascript"></script>
+    <script src="../My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <asp:ScriptManager runat="server" ID="ScriptManager1">
+        </asp:ScriptManager>
+        <div class="main-container" id="main-container">
+            <div class="main-container-inner">
+                <div class="main-content">
+                    <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                    </asp:ContentPlaceHolder>
+                    <!-- footer -->
+                    <hr style="margin-top: 0px;" />
+                    <div class="row center bigger-120"></div>
+                    <br />
+                    <br />
+                    <br />
+                    <div style="text-align: center;">                     
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <span>版权所有：© Copyright 2020, 船级社检验计费管理系统, All Rights Reserved</span><br />
+                    </div>
+                    <div><br /></div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script src="../Scripts/bootstrap.js" type="text/javascript"></script>
+    <script src="../Scripts/holder.min.js" type="text/javascript"></script>
+    <script src="../Scripts/ace-elements.min.js" type="text/javascript"></script>
+    <script src="../Scripts/ace.min.js" type="text/javascript"></script>
+</body>
+</html>

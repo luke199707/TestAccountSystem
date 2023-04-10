@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<frameset id="frame" framespacing="0" border="0" rows="45,*" frameborder="0">
+    <frame src="top.aspx" name="top" scrolling="no" noresize="true" style="z-index: 100" />
+    <frameset id="myFrame" name="myFrame" cols="200,*" framespacing="0" frameborder="no" border="0">
+        <frame name="left" src="left.aspx" noresize="true" style="z-index: 1000;overflow-x:hidden " />
+        <frame name="right" src="../AdminPages/Index.aspx" style="z-index: -100;overflow-x:hidden" />
+    </frameset>
+</frameset>
+<noframes>
+    <body>
+        <p>
+            This page uses frames, but your browser doesn't support them.
+        </p>
+    </body>
+</noframes>
+</html>

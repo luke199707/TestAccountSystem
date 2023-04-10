@@ -1,0 +1,205 @@
+﻿.txtSTaiTou {
+    position: absolute;
+    top: 50px;
+    left: 104px;
+    width: 230px;
+    height: 27px;
+}
+
+.labSTaiTou {
+    position: absolute;
+    top: 48px;
+    left: 21px;
+    font-family: 宋体;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.txtYTaiTou {
+    position: absolute;
+    top: 85px;
+    left: 104px;
+    width: 230px;
+    height: 27px;
+}
+
+.labYTaiTou {
+    position: absolute;
+    top: 90px;
+    left: 21px;
+    font-family: 宋体;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 0px;
+}
+.txtSCode {
+    position: absolute;
+    top: 57px;
+    left: 600px;
+    width: 61px;
+    height: 27px;
+}
+.labSCode {
+    position: absolute;
+    top: 59px;
+    left: 478px;
+    font-family: 宋体;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 0px;
+    width: 88px;
+}
+
+
+.txtYCode {
+    position: absolute;
+    top: 87px;
+    left: 600px;
+    width: 61px;
+    height: 27px;
+}
+
+.labYCode {
+    position: absolute;
+    top: 90px;
+    left: 478px;
+    font-family: 宋体;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 0px;
+    width: 88px;
+}
+.txtUserName {
+    position: absolute;
+    top: 120px;
+    left: 104px;
+    width: 230px;
+    height: 27px;
+}
+.ddlSex {
+    position: absolute;
+    top: 125px;
+    left: 381px;
+    height: 27px;
+    width: 75px;
+}
+.ddlMemberType {
+    position: absolute;
+    top: 158px;
+    left: 169px;
+    height: 25px;
+    width: 123px;
+}
+.txtAge {
+    position: absolute;
+    top: 126px;
+    left: 472px;
+    height: 23px;
+    width: 43px;
+}
+.ddlNation {
+    position: absolute;
+    top: 125px;
+    left: 550px;
+    height: 25px;
+    width: 103px;
+}
+.txtIdentityCode {
+    position: absolute;
+    top: 156px;
+    left: 453px;
+    height: 23px;
+    width: 218px;
+}
+.ddlOutUnit {
+    position: absolute;
+    top: 190px;
+    left: 126px;
+    height: 23px;
+    width: 230px;
+}
+.txtInUnit {
+    position: absolute;
+    top: 190px;
+    left: 380px;
+    height: 23px;
+    width: 279px;
+}
+.txtPayYear {
+    position: absolute;
+    top: 220px;
+    left: 427px;
+    height: 23px;
+    width: 58px;
+}
+.txtPayMonth {
+    position: absolute;
+    top: 220px;
+    left: 508px;
+    height: 23px;
+    width: 58px;
+}
+.txtValidateTime {
+    position: absolute;
+    top: 256px;
+    left: 187px;
+    height: 23px;
+    width: 40px;
+}
+.txtZYear {
+    position: absolute;
+    top: 338px;
+    left: 460px;
+    height: 23px;
+    width: 46px;
+}
+.txtZMonth {
+    position: absolute;
+    top: 338px;
+    left: 528px;
+    height: 23px;
+    width: 28px;
+}
+.txtZDay {
+    position: absolute;
+    top: 338px;
+    left: 577px;
+    height: 23px;
+    width: 28px;
+}
+.txtPhone {
+    position: absolute;
+    top: 368px;
+    left: 335px;
+    height: 25px;
+    width: 331px;
+}
+.txtContactAddress {
+    position: absolute;
+    top: 398px;
+    left: 335px;
+    height: 25px;
+    width: 331px;
+}
+.txtTel {
+    position: absolute;
+    top: 430px;
+    left: 180px;
+    height: 21px;
+    width: 95px;
+}
+.txtFax {
+    position: absolute;
+    top: 430px;
+    left: 340px;
+    height: 21px;
+    width: 95px;
+}
+.txtZip {
+    position: absolute;
+    top: 430px;
+    left: 550px;
+    height: 21px;
+    width: 95px;
+}
+}
